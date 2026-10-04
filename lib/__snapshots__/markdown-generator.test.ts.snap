@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generateMarkdown > matches the detailed template snapshot 1`] = `
+"<div align="center">
+<h1 align="center">Alex Morgan</h1>
+<p align="center">Full-stack engineer · open-source contributor · lifelong learner</p>
+<p align="center"><img src="https://readme-typing-svg.demolab.com?font=Fira%20Code&color=2F6FEB&center=true&vCenter=true&width=500&lines=Shipping+thoughtful+software;Open-source+advocate;Coffee-powered+problem+solver" alt="Typing introduction" /></p>
+<img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" width="100%" alt="Profile banner" />
+</div>
+
+## About Me
+
+- 🔭 I'm currently working on developer tools that make everyday work calmer.
+- 🌱 I'm currently learning more about distributed systems and Rust.
+- 👯 I'm looking to collaborate on accessible open-source projects.
+- 💬 Ask me about TypeScript, React, and building for the web.
+- 📫 Reach me at hello@alexmorgan.dev.
+- ⚡ Fun fact: my best debugging ideas arrive on long walks.
+
+## Tech Stack
+
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black) ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white) ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white) ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white) ![Redis](https://img.shields.io/badge/Redis-FF4438?style=flat-square&logo=redis&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white)
+
+## GitHub Stats
+
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=alexmorgan&show_icons=true&theme=dracula)
+![GitHub streak](https://streak-stats.demolab.com?user=alexmorgan&theme=dracula)
+![Top languages](https://github-readme-stats.vercel.app/api/top-langs/?username=alexmorgan&layout=compact&theme=dracula)
+![GitHub trophies](https://github-profile-trophy.vercel.app/?username=alexmorgan&theme=dracula)
+
+## Connect with me
+
+[![X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/alexmorgan) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexmorgan) [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@alexmorgan) [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/alexmorgan) [![Portfolio](https://img.shields.io/badge/Portfolio-24292F?style=for-the-badge&logo=link&logoColor=white)](https://alexmorgan.dev)
+
+## Support my work
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://www.buymeacoffee.com/alexmorgan) [![Patreon](https://img.shields.io/badge/Patreon-FF424D?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/alexmorgan) [![Ko-fi](https://img.shields.io/badge/Ko--fi-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white)](https://ko-fi.com/alexmorgan)
+"
+`;
