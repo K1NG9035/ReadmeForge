@@ -11,7 +11,7 @@
 [![Deploy with Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?style=flat&logo=vercel&logoColor=white)](https://vercel.com/new)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat)](./LICENSE)
 
-[Live Demo](#) · [Report a Bug](../../issues) · [Request a Feature](../../issues)
+[Run locally](#getting-started) · [Report a Bug](https://github.com/K1NG9035/ReadmeForge/issues) · [Request a Feature](https://github.com/K1NG9035/ReadmeForge/issues/new)
 
 </div>
 
@@ -19,16 +19,52 @@
 
 ## ✨ What is ReadmeForge?
 
-ReadmeForge is a split-screen web app where you compose a professional GitHub profile `README.md` on the left and watch it render on the right, exactly as GitHub will show it. When you're happy, copy the Markdown or download the file and drop it into your `username/username` repository.
+ReadmeForge is a browser-based builder for GitHub profile `README.md` files. Edit profile sections on the left and see a GitHub-style rendering update on the right. When you're happy with it, copy the Markdown or download `README.md` and add it to a public repository named after your GitHub username.
 
-No backend, no accounts, no tracking. Everything runs in your browser and auto-saves to `localStorage`.
+There is no account or app backend. Your edits are saved in this browser's `localStorage`; the app generates the Markdown locally. Optional badges, typing animations, and stats cards in the exported README load from their public image services when someone views your profile.
+
+## How It Works
+
+1. Choose **Minimal**, **Showcase**, or **Detailed**, or start with the saved README.
+2. Edit a section. The form updates the typed Zustand state as you work.
+3. `generateMarkdown(state)` turns that state into Markdown. The preview and Raw Markdown tab use the same generated string.
+4. Copy the Markdown or download it as `README.md`, then place it in your `username/username` GitHub repository.
+
+```mermaid
+flowchart LR
+   A[Section editors] --> B[Typed README state]
+   B --> C[Markdown generator]
+   B <--> D[Browser localStorage]
+   C --> E[Rendered preview]
+   C --> F[Raw Markdown]
+   C --> G[Copy or download]
+```
+
+### Example Output
+
+The Minimal template starts with a centered introduction, an About section, and selected technology badges. The generated result is ordinary Markdown with a small amount of HTML for alignment:
+
+```md
+<div align="center">
+<h1 align="center">Alex Morgan</h1>
+<p align="center">Software developer building useful things.</p>
+</div>
+
+## About Me
+
+- 🌱 Currently learning something new every day.
+
+## Tech Stack
+
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+```
 
 ## 🚀 Features
 
 | Section | What you can do |
 | --- | --- |
 | **Header** | Name, subtitle, animated typing text (README Typing SVG), optional banner image |
-| **About Me** | Add, edit, remove and reorder emoji-prefixed bullet points |
+| **About Me** | Add, edit, and remove emoji-prefixed bullet points |
 | **Tech Stack** | Search a categorized badge grid (Languages, Frameworks, Cloud, Databases, Tools) powered by shields.io |
 | **GitHub Stats** | Stats card, streak stats, top languages, trophies, with `dark`, `light`, `nord` and `dracula` themes |
 | **Social & Contact** | Twitter/X, LinkedIn, YouTube, Discord and Portfolio badges with custom URLs |
@@ -50,7 +86,8 @@ No backend, no accounts, no tracking. Everything runs in your browser and auto-s
 - **Styling:** Tailwind CSS (class-based dark mode) + shadcn/ui
 - **Icons:** Lucide React
 - **State:** Zustand with `persist` middleware
-- **Rendering:** `react-markdown` + `remark-gfm` + `rehype-raw`
+- **Rendering:** `react-markdown` + `remark-gfm` + `rehype-raw` + `rehype-sanitize`
+- **Raw Markdown:** `react-syntax-highlighter`
 
 ## 🗂️ Project Structure
 
@@ -71,7 +108,10 @@ readmeforge/
 │   │   └── SupportEditor.tsx
 │   ├── ActionBar.tsx
 │   ├── EditorPane.tsx
-│   └── PreviewPane.tsx
+│   ├── PreviewPane.tsx
+│   └── ReadmeForgeApp.tsx
+├── hooks/
+│   └── useHydrated.ts          # prevent persisted-state hydration mismatch
 ├── lib/
 │   ├── markdown-generator.ts  # pure: state in, Markdown string out
 │   ├── badges.ts              # badge catalog (name, color, logo)
@@ -95,8 +135,8 @@ readmeforge/
 ### Install and run
 
 ```bash
-git clone https://github.com/your-username/readmeforge.git
-cd readmeforge
+git clone https://github.com/K1NG9035/ReadmeForge.git
+cd ReadmeForge
 npm install
 npm run dev
 ```
@@ -163,25 +203,11 @@ Since there is no backend, you can export plain static files.
 
 ### Option 4: Docker
 
-```dockerfile
-FROM node:20-alpine AS build
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
-
-FROM node:20-alpine
-WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=build /app ./
-EXPOSE 3000
-CMD ["npm", "run", "start"]
-```
+The included `Dockerfile` uses Node 20 Alpine and separate dependency, build, and runtime stages.
 
 ```bash
 docker build -t readmeforge .
-docker run -p 3000:3000 readmeforge
+docker run --rm -p 3000:3000 readmeforge
 ```
 
 ### Pre-deploy checklist
